@@ -21,8 +21,8 @@
       "types": "./types/node/index.d.ts"
     },
     "./shared": {
-      "import": "./dist/node/index.js",
-      "types": "./types/node/index.d.ts"
+      "import": "./dist/shared/index.js",
+      "types": "./types/shared/index.d.ts"
     }
   },
   "scripts": {
