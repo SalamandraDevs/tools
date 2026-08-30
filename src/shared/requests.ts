@@ -34,7 +34,6 @@ const unknownError: string = 'An unknown error occurred, check api server connec
  * successful responses are wrapped in the same response shape. HTTP failures
  * are returned as response data, while network and unexpected failures are
  * raised as `CustomError` instances.
- *
  * @template T - Expected response data type.
  * @param baseUrl - Base URL used to construct the request URL.
  * @param path - Relative or absolute path appended to the base URL.

@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "tsc --build",
+    "test": "pnpm run build && node --test ./tests/transform.test.mjs",
     "clean": "rm -rf ./dist ./types ./tsconfig.tsbuildinfo",
     "check": "tsc --noEmit",
     "lint": "eslint ./src --ext .ts --fix",
@@ -44,12 +45,12 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.5",
+    "@eslint/js": "^10.0.1",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^24.13.3",
-    "eslint": "^9.39.5",
+    "@types/node": "^26.3.0",
+    "eslint": "^10.9.1",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsdoc": "^60.8.3",
+    "eslint-plugin-jsdoc": "^64.2.1",
     "eslint-plugin-prettier": "^5.5.6",
     "globals": "^17.7.0",
     "prettier": "^3.9.5",
