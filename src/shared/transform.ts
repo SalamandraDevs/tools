@@ -9,9 +9,14 @@ export type MongoJSONSchema = {
   };
 };
 
+/** MySQL table-definition fragment consumed by the dataset provisioner. */
+export type MySqlSchema = {
+  ddl: string;
+};
+
 type ToJSONSchemaOptions = {
   target: 'draft-04'; //JSON Schema dialect supported by MongoDB.
-  cycles: 'throw';   // Fail instead of generating references for recursive schemas.
+  cycles: 'throw'; // Fail instead of generating references for recursive schemas.
   // Sign to handle unrepresentable Js to Mongo data types
   unrepresentable: (context: { zodSchema: z.ZodType }) => 'any' | 'throw';
   // Handle MongoDB keywords and apply BSON-specific mappings per node.
@@ -45,7 +50,7 @@ export function zodToMongoSchema(schema: z.ZodType): MongoJSONSchema {
 
         // JavaScript dates have no JSON Schema equivalent, but MongoDB has a BSON date type.
         if (zodSchema._zod.def.type === 'date') {
-          (node).bsonType = 'date';
+          node.bsonType = 'date';
         }
 
         // MongoDB does not support JS integer type. Accept the
@@ -93,4 +98,20 @@ export function zodToMongoSchema(schema: z.ZodType): MongoJSONSchema {
       cause
     });
   }
+}
+
+/**
+ * Returns the temporary MySQL table definition used while Zod-to-MySQL mapping is pending.
+ *
+ * The storage-owned primary key is sufficient to exercise provisioning wiring. Entity fields
+ * are deliberately not inferred until their MySQL type and constraint mappings are defined.
+ * @param schema - Source schema reserved for the future converter implementation.
+ * @returns Fixed MySQL table-definition fragment.
+ */
+export function zodToMySqlSchema(schema: z.ZodType): MySqlSchema {
+  void schema;
+
+  return {
+    ddl: '`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY'
+  };
 }

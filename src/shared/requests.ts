@@ -1,4 +1,5 @@
 import { CustomError } from './errors.js';
+import { isResponseBody } from './typeguards.js';
 
 /**
  * Standard response body returned by the service APIs.
@@ -17,7 +18,6 @@ export type ApiResponse<T> = {
   response: Response;
   body: ResponseBody<T>;
 };
-
 
 type ParsedResponse = {
   value: unknown;
@@ -114,7 +114,7 @@ async function parseResponse(response: Response): Promise<ParsedResponse> {
           // Normalize failures from both JSON parsing and text fallback.
           throw new CustomError({
             name: 'PARSE_RESPONSE_ERROR',
-            message:  error instanceof Error ? error.message : unknownError,
+            message: error instanceof Error ? error.message : unknownError,
             cause: error
           });
         }
@@ -152,22 +152,8 @@ async function parseResponse(response: Response): Promise<ParsedResponse> {
 
     throw new CustomError({
       name: 'UNKNOWN_CONNECTION_ERROR',
-      message: error instanceof Error ? error.message  : unknownError,
+      message: error instanceof Error ? error.message : unknownError,
       cause: error
     });
   }
-}
-
-/**
- * Checks whether an unknown value is a standard service response body.
- * @template T - Expected response data type.
- * @param value - Value to inspect.
- * @returns `true` when the value has a string message and a data property.
- */
-function isResponseBody<T>(value: unknown): value is ResponseBody<T> {
-  if (typeof value !== 'object' || value === null) {
-    return false;
-  }
-
-  return 'message' in value && typeof value.message === 'string' && 'data' in value;
 }
