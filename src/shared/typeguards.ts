@@ -6,7 +6,7 @@ import type { ResponseBody } from './requests.js';
  * @param obj - Object that will be checked
  * @returns - true if the type matches the given structure, false otherwise.
  */
-export function isObject(obj: any): obj is Record<string, any> {
+export function isObject(obj: any): obj is Record<string, unknown> {
   return typeof obj === 'object' && obj !== null && !Array.isArray(obj);
 }
 
