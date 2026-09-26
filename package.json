@@ -28,7 +28,9 @@
   "scripts": {
     "build": "tsc --build",
     "test": "pnpm run build && node --test ./tests/transform.test.mjs",
-    "clean": "rm -rf ./dist ./types ./tsconfig.tsbuildinfo",
+    "clean": "rm -rf ./dist ./types ./tsconfig.tsbuildinfo ./docs-site",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch",
     "check": "tsc --noEmit",
     "lint": "eslint ./src --ext .ts --fix",
     "format": "prettier --config .prettierrc ./src --write"
@@ -55,6 +57,7 @@
     "globals": "^17.7.0",
     "prettier": "^3.9.5",
     "simple-git-hooks": "^2.13.1",
+    "typedoc": "^0.28.20",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.64.0"
   }
