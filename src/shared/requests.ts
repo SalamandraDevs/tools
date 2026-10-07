@@ -1,45 +1,34 @@
 import { CustomError } from './errors.js';
 import { isResponseBody } from './typeguards.js';
-
-/**
- * Standard response body returned by the service APIs.
- * @template T - Expected response data type.
- */
-export type ResponseBody<T> = {
-  message: string;
-  data: T | null;
-};
-
-/**
- * Response returned by `makeApiRequest`.
- * @template T - Expected response data type.
- */
-export type ApiResponse<T> = {
-  response: Response;
-  body: ResponseBody<T>;
-};
-
-type ParsedResponse = {
-  value: unknown;
-  errorMessage: string | null;
-};
+import type { ResponseBody, ApiResponse, ParsedResponse } from './types.js';
 
 const unknownError: string = 'An unknown error occurred, check api server connection';
 
 /**
- * Performs an HTTP request with the Node.js `fetch` implementation.
- *
- * JSON responses are parsed automatically, while non-JSON responses are
- * returned as text. Standard service response bodies are preserved; other
- * successful responses are wrapped in the same response shape. HTTP failures
- * are returned as response data, while network and unexpected failures are
- * raised as `CustomError` instances.
+ * Performs an HTTP request with the Node.js `fetch` implementation and normalizes the result.
  * @template T - Expected response data type.
  * @param baseUrl - Base URL used to construct the request URL.
  * @param path - Relative or absolute path appended to the base URL.
  * @param options - Standard `fetch` request options.
- * @returns The native response and normalized response body.
- * @throws {CustomError} When the request cannot be completed or parsed.
+ * @returns The native response paired with a body normalized into the {@link ResponseBody} envelope.
+ * @throws {CustomError} API_CALL_ERROR when the request cannot reach the server.
+ * @throws {CustomError} PARSE_RESPONSE_ERROR when the response body cannot be read as JSON or text.
+ * @throws {CustomError} UNKNOWN_CONNECTION_ERROR when parsing fails for an unclassified reason.
+ * @remarks
+ * A transport failure (DNS, connection, timeout) is raised as an error, but an HTTP failure
+ * status is not: it is returned in the {@link ResponseBody} with `data` set to `null` and the
+ * status text as the message, so callers inspect `response.ok` rather than catching. Bodies
+ * already in the platform envelope are passed through unchanged (detected by
+ * {@link isResponseBody}); any other successful body is wrapped in the same envelope so callers
+ * see one consistent shape whether or not the peer is a first-party service.
+ * @example
+ * ```ts
+ * const { response, body } = await makeApiRequest<User>(baseUrl, '/users/me', { method: 'GET' });
+ * if (!response.ok) throw new CustomError({ name: 'EXTERNAL_API_ERROR', message: body.message });
+ * const user: User | null = body.data;
+ * ```
+ * @group Shared
+ * @category HTTP
  */
 export async function makeApiRequest<T>(
   baseUrl: string,
@@ -91,7 +80,8 @@ export async function makeApiRequest<T>(
  * Parses a response body and builds a message for HTTP failures.
  * @param response - Response whose body should be parsed.
  * @returns The parsed value and an HTTP error message when applicable.
- * @throws {CustomError} When response body parsing fails.
+ * @throws {CustomError} PARSE_RESPONSE_ERROR when both JSON parsing and the text fallback fail.
+ * @throws {CustomError} UNKNOWN_CONNECTION_ERROR when parsing fails for an unclassified reason.
  */
 async function parseResponse(response: Response): Promise<ParsedResponse> {
   try {
