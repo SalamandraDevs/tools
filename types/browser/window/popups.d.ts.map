@@ -1,0 +1,1 @@
+{"version":3,"file":"popups.d.ts","sourceRoot":"","sources":["../../../src/browser/window/popups.ts"],"names":[],"mappings":"AAAA;;;;;;;GAOG;AACH,wBAAgB,eAAe,CAC7B,GAAG,EAAE,MAAM,EACX,UAAU,EAAE,MAAM,EAClB,KAAK,EAAE,MAAM,EACb,MAAM,EAAE,MAAM,GACb,OAAO,GAAG,IAAI,CAwBhB;AAED;;;;;;;;GAQG;AACH,wBAAgB,YAAY,CAC1B,UAAU,EAAE,MAAM,EAClB,MAAM,EAAE,MAAM,GAAG,OAAO,GAAG,UAAU,GACpC,OAAO,CAqBT"}

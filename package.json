@@ -3,15 +3,11 @@
   "version": "0.1.0",
   "description": "Salamandra Devs shared utilities",
   "type": "module",
-  "packageManager": "pnpm@11.21.0",
+  "packageManager": "pnpm@12.4.1",
   "engines": {
     "node": ">=22"
   },
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./types/index.d.ts"
-    },
     "./browser": {
       "import": "./dist/browser/index.js",
       "types": "./types/browser/index.d.ts"
@@ -33,12 +29,25 @@
     "docs:watch": "typedoc --watch",
     "check": "tsc --noEmit",
     "lint": "eslint ./src --ext .ts --fix",
-    "format": "prettier --config .prettierrc ./src --write"
+    "format": "prettier --config .prettierrc ./src --write",
+    "prepublishOnly": "pnpm run build"
   },
   "simple-git-hooks": {
     "pre-push": "pnpm run format && pnpm run lint"
   },
   "license": "LGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SalamandraDevs/tools.git"
+  },
+  "homepage": "https://github.com/SalamandraDevs/tools#readme",
+  "bugs": {
+    "url": "https://github.com/SalamandraDevs/tools/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "files": [
     "dist",
     "types"
