@@ -9,7 +9,7 @@
     "inlineSourceMap": true,
     "module": "NodeNext",
     "target": "ES2024",
-    "lib": ["ES2024"],
+    "lib": ["ES2024", "DOM"],
     "esModuleInterop": true,
     "moduleResolution": "nodenext",
     "strict": true,
