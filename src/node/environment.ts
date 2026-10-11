@@ -11,19 +11,18 @@ import { CustomError } from '../shared/errors.js';
  * configuration knobs are skipped. The values are returned to the caller, never written
  * back into the config object, so a reader of the config sees only the file placeholder
  * (for example `READ FROM ENV BAO_TOKEN`) and never the resolved secret.
- * @group Node
- * @category Environment
  * @example
  *
  * ```ts
  * const { baoAddr, baoToken } = loadEnvVariables(openBaoSigningKeysConfigSchema);
  * ```
  *
- * @param schema - Config object schema whose environment fields carry `.meta({ env: 'VAR'
- *   })`.
+ * @param schema - Config object schema with fields carrying `.meta({ env: 'VAR' })`.
  * @returns The resolved values, keyed by their schema property names.
  * @throws {CustomError} ENV_VAR_ERROR when any declared variable is missing, blank, or
- *   malformed.
+ * malformed.
+ * @group Node
+ * @category Environment
  */
 export function loadEnvVariables(schema: z.ZodObject): Record<string, string> {
   const values: Record<string, string> = {};
