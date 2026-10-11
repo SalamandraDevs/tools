@@ -6,7 +6,7 @@ name: Release
 #     `npm stage publish`, which does NOT make the version live. It parks the release in
 #     npm's staging queue.
 #   - A maintainer then promotes it with 2FA:
-#       npm stage list @slmdevs/tools
+#       npm stage list @salamandradevs/tools
 #       npm stage approve <id>      # or reject from npmjs.com
 #   - Provenance is attached automatically (public repo + public package + id-token: write).
 
@@ -47,8 +47,8 @@ jobs:
       - name: Guard against republishing an existing version
         run: |
           VERSION=$(node -p "require('./package.json').version")
-          if npm view "@slmdevs/tools@${VERSION}" version >/dev/null 2>&1; then
-            echo "::error::@slmdevs/tools@${VERSION} is already published. Bump the version."
+          if npm view "@salamandradevs/tools@${VERSION}" version >/dev/null 2>&1; then
+            echo "::error::@salamandradevs/tools@${VERSION} is already published. Bump the version."
             exit 1
           fi
 

@@ -1,6 +1,6 @@
 # Salamandra Devs Community Platform Tools
 
-`@slmdevs/tools` is the shared utility package for the Salamandra Devs Community
+`@salamandradevs/tools` is the shared utility package for the Salamandra Devs Community
 Platform. It collects small browser-safe, shared, and Node-specific helpers used by services
 and libraries across the platform.
 
@@ -18,11 +18,11 @@ repositories without taking ownership of application policy.
 
 ## Project Shape
 
-The package exports shared utilities from `@slmdevs/tools/shared` and Node-only helpers from
-`@slmdevs/tools/node`. The separation keeps browser-compatible code clear while allowing
+The package exports shared utilities from `@salamandradevs/tools/shared` and Node-only helpers from
+`@salamandradevs/tools/node`. The separation keeps browser-compatible code clear while allowing
 server packages to use Node crypto utilities where appropriate.
 
-`@slmdevs/core` and `@slmdevs/auth` use Tools for structured errors, schema conversion, API
+`@salamandradevs/core` and `@salamandradevs/auth` use Tools for structured errors, schema conversion, API
 request normalization, and security-sensitive comparisons.
 
 ## Development
