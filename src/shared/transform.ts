@@ -6,7 +6,6 @@ import { CustomError } from './errors.js';
  * MongoDB JSON schema validator passed to `createCollection`.
  *
  * - Validator: `$jsonSchema` wrapper MongoDB applies as a document validator.
- *
  * @group Shared
  * @category Schema Conversion
  */
@@ -20,7 +19,6 @@ export type MongoJSONSchema = {
  * MySQL table-definition fragment consumed by the dataset provisioner.
  *
  * - Ddl: Column and constraint DDL spliced into a `CREATE TABLE` statement.
- *
  * @group Shared
  * @category Schema Conversion
  */
@@ -43,7 +41,6 @@ type ToJSONSchemaOptions = {
 
 /**
  * Converts a Zod object schema into a MongoDB collection validator.
- *
  * @remarks
  * Zod performs the recursive JSON Schema conversion; this function only adapts the handful
  * of differences MongoDB's Draft 4 dialect requires: dropping the `format`, `default`, and
@@ -125,7 +122,6 @@ export function zodToMongoSchema(schema: z.ZodType): MongoJSONSchema {
 
 /**
  * Returns the temporary MySQL table definition used while Zod-to-MySQL mapping is pending.
- *
  * @remarks
  * A placeholder for the eventual counterpart to {@link zodToMongoSchema}. The storage-owned
  * primary key alone is enough to exercise the provisioning wiring, so entity fields are

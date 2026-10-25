@@ -1,13 +1,12 @@
 import { CustomError } from './errors.js';
 import { isResponseBody } from './typeguards.js';
-import type { ResponseBody, ApiResponse, ParsedResponse } from './types.js';
+import type { ApiResponse, ParsedResponse } from './types.js';
 
 const unknownError: string = 'An unknown error occurred, check api server connection';
 
 /**
  * Performs an HTTP request with the Node.js `fetch` implementation and normalizes the
  * result.
- *
  * @remarks
  * A transport failure (DNS, connection, timeout) is raised as an error, but an HTTP failure
  * status is not: it is returned in the {@link ResponseBody} with `data` set to `null` and
@@ -27,7 +26,6 @@ const unknownError: string = 'An unknown error occurred, check api server connec
  *   throw new CustomError({ name: 'EXTERNAL_API_ERROR', message: body.message });
  * const user: User | null = body.data;
  * ```
- *
  * @template T - Expected response data type.
  * @param baseUrl - Base URL used to construct the request URL.
  * @param path - Relative or absolute path appended to the base URL.
@@ -88,7 +86,6 @@ export async function makeApiRequest<T>(
 
 /**
  * Parses a response body and builds a message for HTTP failures.
- *
  * @param response - Response whose body should be parsed.
  * @returns The parsed value and an HTTP error message when applicable.
  * @throws {CustomError} PARSE_RESPONSE_ERROR when both JSON parsing and the text fallback

@@ -1,6 +1,5 @@
 /**
  * Names used to classify application errors.
- *
  * @remarks
  * Every {@link CustomError} carries one of these literals as its `name`, so callers can
  * branch on classification without string parsing and API error handlers can map a name to
@@ -33,7 +32,6 @@ export type ErrorName =
 
 /**
  * Reusable error messages shared across call sites that raise the same failure.
- *
  * @remarks
  * Keyed by a short stable code so distinct call sites report one identical wording; keeping
  * the text here avoids drift between the places that detect the same condition.
@@ -50,7 +48,6 @@ export const errMessages: Record<string, string> = {
  * - Name: Classification literal assigned to the error's `name`.
  * - Message: Human-readable description passed to the base `Error`.
  * - Cause: Optional underlying error or value retained as the `cause`.
- *
  * @group Shared
  * @category Errors
  */
@@ -62,7 +59,6 @@ export type ErrorParams = {
 
 /**
  * Error with a caller-defined name and an optional underlying cause.
- *
  * @remarks
  * The structured constructor keeps error classification and causal context available
  * through a fixed set of literal {@link ErrorName} values, so consumers branch on `name`
@@ -90,7 +86,6 @@ export class CustomError extends Error {
 
   /**
    * Creates a structured application error.
-   *
    * @param params - Error name, message, and optional underlying cause.
    */
   constructor(params: ErrorParams) {

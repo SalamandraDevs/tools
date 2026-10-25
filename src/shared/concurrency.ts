@@ -1,6 +1,5 @@
 /**
  * Coalesces concurrent calls to an async operation into a single in-flight execution.
- *
  * @remarks
  * Single flight (also called request coalescing or in-flight deduplication) ensures that
  * when several callers request the same work at the same time, the work runs once and every
@@ -36,8 +35,7 @@
  *   }
  * }
  * ```
- *
- * @typeParam T - Value the operation resolves to; `void` for a side-effecting refresh.
+ * @template T - Value the operation resolves to; `void` for a side-effecting refresh.
  * @param operation - Async operation to run at most once per in-flight window.
  * @returns A function that, when called, returns the shared in-flight result, starting the
  *   operation only when none is currently running.
