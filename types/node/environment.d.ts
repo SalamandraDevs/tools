@@ -8,6 +8,8 @@ import { z } from 'zod';
  * configuration knobs are skipped. The values are returned to the caller, never written
  * back into the config object, so a reader of the config sees only the file placeholder
  * (for example `READ FROM ENV BAO_TOKEN`) and never the resolved secret.
+ * @group Node
+ * @category Environment
  * @example
  *
  * ```ts
@@ -17,9 +19,7 @@ import { z } from 'zod';
  * @param schema - Config object schema with fields carrying `.meta({ env: 'VAR' })`.
  * @returns The resolved values, keyed by their schema property names.
  * @throws {CustomError} ENV_VAR_ERROR when any declared variable is missing, blank, or
- * malformed.
- * @group Node
- * @category Environment
+ *   malformed.
  */
 export declare function loadEnvVariables(schema: z.ZodObject): Record<string, string>;
 //# sourceMappingURL=environment.d.ts.map

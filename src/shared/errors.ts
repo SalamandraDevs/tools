@@ -27,6 +27,7 @@ export type ErrorName =
   | 'KEYS_PROVIDER_ERROR'
   | 'ARCHITECTURE_NOT_IMPLEMENTED'
   | 'RESOURCE_NOT_FOUND'
+  | 'RATE_LIMIT_EXCEEDED'
   | 'TypeError'
   | 'Error';
 

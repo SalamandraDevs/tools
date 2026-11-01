@@ -37,7 +37,7 @@
  * }
  * ```
  *
- * @typeParam T - Value the operation resolves to; `void` for a side-effecting refresh.
+ * @template T - Value the operation resolves to; `void` for a side-effecting refresh.
  * @param operation - Async operation to run at most once per in-flight window.
  * @returns A function that, when called, returns the shared in-flight result, starting the
  *   operation only when none is currently running.
