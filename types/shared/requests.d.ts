@@ -2,7 +2,6 @@ import type { ApiResponse } from './types.js';
 /**
  * Performs an HTTP request with the Node.js `fetch` implementation and normalizes the
  * result.
- *
  * @remarks
  * A transport failure (DNS, connection, timeout) is raised as an error, but an HTTP failure
  * status is not: it is returned in the {@link ResponseBody} with `data` set to `null` and
@@ -22,7 +21,6 @@ import type { ApiResponse } from './types.js';
  *   throw new CustomError({ name: 'EXTERNAL_API_ERROR', message: body.message });
  * const user: User | null = body.data;
  * ```
- *
  * @template T - Expected response data type.
  * @param baseUrl - Base URL used to construct the request URL.
  * @param path - Relative or absolute path appended to the base URL.

@@ -3,7 +3,6 @@
  *
  * - Message: Human-readable status or error description.
  * - Data: Payload on success, or `null` when none is available.
- *
  * @group Shared
  * @category HTTP
  * @template T - Expected response data type.
@@ -18,7 +17,6 @@ export type ResponseBody<T> = {
  *
  * - Response: Native `fetch` `Response`, retained for status and headers.
  * - Body: Response body normalized into the {@link ResponseBody} envelope.
- *
  * @group Shared
  * @category HTTP
  * @template T - Expected response data type.

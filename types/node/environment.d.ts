@@ -1,7 +1,6 @@
 import { z } from 'zod';
 /**
  * Reads the environment-sourced values a configuration schema declares.
- *
  * @remarks
  * The schema is the single source of truth: each field marked with a `meta.env` name is
  * read from that process variable and validated by the field's own schema, while plain
@@ -15,7 +14,6 @@ import { z } from 'zod';
  * ```ts
  * const { baoAddr, baoToken } = loadEnvVariables(openBaoSigningKeysConfigSchema);
  * ```
- *
  * @param schema - Config object schema with fields carrying `.meta({ env: 'VAR' })`.
  * @returns The resolved values, keyed by their schema property names.
  * @throws {CustomError} ENV_VAR_ERROR when any declared variable is missing, blank, or

@@ -1,6 +1,5 @@
 /**
  * Creates the ASCII signing input for a compact JWT.
- *
  * @remarks
  * Produces the exact `header.payload` string that a JWS signature is computed over; the
  * caller appends `.<signature>` to form the complete compact token. Both segments use
@@ -14,7 +13,6 @@
 export declare function createJwtSigningInput(protectedHeader: object, payload: object): string;
 /**
  * Compares two hash strings without leaking the first differing byte position.
- *
  * @remarks
  * Uses `node:crypto` `timingSafeEqual` so comparison time does not depend on where the
  * values diverge, closing the timing side channel a plain `===` would open. The length

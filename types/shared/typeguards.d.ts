@@ -1,7 +1,6 @@
 import type { ResponseBody } from './types.js';
 /**
  * Narrows an unknown value to a non-null, non-array plain object.
- *
  * @remarks
  * Arrays are rejected because callers use this guard before indexing string keys, where an
  * array would type-check but carry the wrong shape. It is the primitive on which the other
@@ -14,7 +13,6 @@ import type { ResponseBody } from './types.js';
 export declare function isObject(obj: any): obj is Record<string, unknown>;
 /**
  * Narrows a value to a canonical UUID v4 string.
- *
  * @remarks
  * Validates the version nibble (`4`) and variant bits (`8`, `9`, `a`, or `b`), so a
  * well-formed but non-v4 UUID is rejected. Matching is case-insensitive.
@@ -26,7 +24,6 @@ export declare function isObject(obj: any): obj is Record<string, unknown>;
 export declare function isUuidV4(id: any): id is string;
 /**
  * Narrows an unknown value to the standard {@link ResponseBody} envelope.
- *
  * @remarks
  * Distinguishes a first-party service response from a third-party payload;
  * {@link makeApiRequest} uses it to decide whether a body is already in the platform
