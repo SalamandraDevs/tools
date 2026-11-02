@@ -3,9 +3,9 @@
   "version": "0.1.2",
   "description": "Salamandra Devs shared utilities",
   "type": "module",
-  "packageManager": "pnpm@12.4.1",
+  "packageManager": "pnpm@12.16.1",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "exports": {
     "./browser": {
