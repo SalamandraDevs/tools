@@ -1,5 +1,6 @@
 /**
  * Names used to classify application errors.
+ *
  * @remarks
  * Every {@link CustomError} carries one of these literals as its `name`, so callers can
  * branch on classification without string parsing and API error handlers can map a name to
@@ -11,6 +12,7 @@
 export type ErrorName = 'API_CALL_ERROR' | 'PARSE_RESPONSE_ERROR' | 'UNKNOWN_CONNECTION_ERROR' | 'EXTERNAL_API_ERROR' | 'ENV_VAR_ERROR' | 'CONFIG_ERROR' | 'AUTHENTICATION_FAILED' | 'AUTHORIZATION_DENIED' | 'OAUTH_FLOW_ERROR' | 'VALIDATION_ERROR' | 'DB_SCHEMA_CONVERTION_ERROR' | 'DB_DUPLICATE_KEY_ERROR' | 'DB_DATASET_ERROR' | 'DB_BACKEND_ERROR' | 'INTERNAL_ERROR' | 'KEYS_PROVIDER_ERROR' | 'ARCHITECTURE_NOT_IMPLEMENTED' | 'RESOURCE_NOT_FOUND' | 'RATE_LIMIT_EXCEEDED' | 'TypeError' | 'Error';
 /**
  * Reusable error messages shared across call sites that raise the same failure.
+ *
  * @remarks
  * Keyed by a short stable code so distinct call sites report one identical wording; keeping
  * the text here avoids drift between the places that detect the same condition.
@@ -24,6 +26,7 @@ export declare const errMessages: Record<string, string>;
  * - Name: Classification literal assigned to the error's `name`.
  * - Message: Human-readable description passed to the base `Error`.
  * - Cause: Optional underlying error or value retained as the `cause`.
+ *
  * @group Shared
  * @category Errors
  */
@@ -34,6 +37,7 @@ export type ErrorParams = {
 };
 /**
  * Error with a caller-defined name and an optional underlying cause.
+ *
  * @remarks
  * The structured constructor keeps error classification and causal context available
  * through a fixed set of literal {@link ErrorName} values, so consumers branch on `name`
@@ -60,6 +64,7 @@ export declare class CustomError extends Error {
     name: ErrorName;
     /**
      * Creates a structured application error.
+     *
      * @param params - Error name, message, and optional underlying cause.
      */
     constructor(params: ErrorParams);

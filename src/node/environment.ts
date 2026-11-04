@@ -27,26 +27,30 @@ import { CustomError } from '../shared/errors.js';
 export function loadEnvVariables(schema: z.ZodObject): Record<string, string> {
   const values: Record<string, string> = {};
 
-  // One line per variable, naming the variable but never its value: any of them may be a secret.
   const faults: string[] = [];
 
+  // `schema.shape` maps each property name to its field schema; iterate those field by field.
   for (const [key, field] of Object.entries(schema.shape)) {
+    // Only fields tagged with `.meta({ env })` are env-sourced; plain config knobs are skipped.
     const envName: string | undefined = field.meta()?.env;
 
     if (typeof envName !== 'string') {
       continue;
     }
 
+    // Use the own zod field parser while trim the any white space
     const parsed: ReturnType<typeof field.safeParse> = field.safeParse(
       process.env[envName]?.trim()
     );
 
     if (parsed.success) {
+      // Keyed by the schema property name, not the env var, so the caller destructures by field.
       values[key] = parsed.data as string;
 
       continue;
     }
 
+    // Collect every fault before throwing, so one pass reports all bad variables at once.
     const detail: string = parsed.error.issues[0]?.message ?? 'is invalid';
 
     faults.push(`${envName} ${detail}`);

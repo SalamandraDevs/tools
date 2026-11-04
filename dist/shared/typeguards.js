@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Narrows an unknown value to a non-null, non-array plain object.
+ *
  * @remarks
  * Arrays are rejected because callers use this guard before indexing string keys, where an
  * array would type-check but carry the wrong shape. It is the primitive on which the other
@@ -15,6 +16,7 @@ export function isObject(obj) {
 }
 /**
  * Narrows a value to a canonical UUID v4 string.
+ *
  * @remarks
  * Validates the version nibble (`4`) and variant bits (`8`, `9`, `a`, or `b`), so a
  * well-formed but non-v4 UUID is rejected. Matching is case-insensitive.
@@ -29,6 +31,7 @@ export function isUuidV4(id) {
 }
 /**
  * Narrows an unknown value to the standard {@link ResponseBody} envelope.
+ *
  * @remarks
  * Distinguishes a first-party service response from a third-party payload;
  * {@link makeApiRequest} uses it to decide whether a body is already in the platform
@@ -42,4 +45,4 @@ export function isUuidV4(id) {
 export function isResponseBody(obj) {
     return isObject(obj) && typeof obj.message === 'string' && 'data' in obj;
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZWd1YXJkcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9zaGFyZWQvdHlwZWd1YXJkcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQSx1REFBdUQ7QUFFdkQ7Ozs7Ozs7Ozs7R0FVRztBQUNILE1BQU0sVUFBVSxRQUFRLENBQUMsR0FBUTtJQUMvQixPQUFPLE9BQU8sR0FBRyxLQUFLLFFBQVEsSUFBSSxHQUFHLEtBQUssSUFBSSxJQUFJLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQyxHQUFHLENBQUMsQ0FBQztBQUN4RSxDQUFDO0FBRUQ7Ozs7Ozs7OztHQVNHO0FBQ0gsTUFBTSxVQUFVLFFBQVEsQ0FBQyxFQUFPO0lBQzlCLE1BQU0sV0FBVyxHQUNmLHdFQUF3RSxDQUFDO0lBQzNFLE9BQU8sT0FBTyxFQUFFLEtBQUssUUFBUSxJQUFJLFdBQVcsQ0FBQyxJQUFJLENBQUMsRUFBRSxDQUFDLENBQUM7QUFDeEQsQ0FBQztBQUVEOzs7Ozs7Ozs7OztHQVdHO0FBQ0gsTUFBTSxVQUFVLGNBQWMsQ0FBSSxHQUFZO0lBQzVDLE9BQU8sUUFBUSxDQUFDLEdBQUcsQ0FBQyxJQUFJLE9BQU8sR0FBRyxDQUFDLE9BQU8sS0FBSyxRQUFRLElBQUksTUFBTSxJQUFJLEdBQUcsQ0FBQztBQUMzRSxDQUFDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZWd1YXJkcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9zaGFyZWQvdHlwZWd1YXJkcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQSx1REFBdUQ7QUFFdkQ7Ozs7Ozs7Ozs7O0dBV0c7QUFDSCxNQUFNLFVBQVUsUUFBUSxDQUFDLEdBQVE7SUFDL0IsT0FBTyxPQUFPLEdBQUcsS0FBSyxRQUFRLElBQUksR0FBRyxLQUFLLElBQUksSUFBSSxDQUFDLEtBQUssQ0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLENBQUM7QUFDeEUsQ0FBQztBQUVEOzs7Ozs7Ozs7O0dBVUc7QUFDSCxNQUFNLFVBQVUsUUFBUSxDQUFDLEVBQU87SUFDOUIsTUFBTSxXQUFXLEdBQ2Ysd0VBQXdFLENBQUM7SUFDM0UsT0FBTyxPQUFPLEVBQUUsS0FBSyxRQUFRLElBQUksV0FBVyxDQUFDLElBQUksQ0FBQyxFQUFFLENBQUMsQ0FBQztBQUN4RCxDQUFDO0FBRUQ7Ozs7Ozs7Ozs7OztHQVlHO0FBQ0gsTUFBTSxVQUFVLGNBQWMsQ0FBSSxHQUFZO0lBQzVDLE9BQU8sUUFBUSxDQUFDLEdBQUcsQ0FBQyxJQUFJLE9BQU8sR0FBRyxDQUFDLE9BQU8sS0FBSyxRQUFRLElBQUksTUFBTSxJQUFJLEdBQUcsQ0FBQztBQUMzRSxDQUFDIn0=

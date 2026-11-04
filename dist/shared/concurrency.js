@@ -1,5 +1,6 @@
 /**
  * Coalesces concurrent calls to an async operation into a single in-flight execution.
+ *
  * @remarks
  * Single flight (also called request coalescing or in-flight deduplication) ensures that
  * when several callers request the same work at the same time, the work runs once and every
@@ -35,6 +36,7 @@
  *   }
  * }
  * ```
+ *
  * @template T - Value the operation resolves to; `void` for a side-effecting refresh.
  * @param operation - Async operation to run at most once per in-flight window.
  * @returns A function that, when called, returns the shared in-flight result, starting the
@@ -56,4 +58,4 @@ export function singleFlight(operation) {
         }
     };
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uY3VycmVuY3kuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvc2hhcmVkL2NvbmN1cnJlbmN5LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQXlDRztBQUNILE1BQU0sVUFBVSxZQUFZLENBQUksU0FBMkI7SUFDekQsSUFBSSxRQUFnQyxDQUFDO0lBRXJDLE9BQU8sS0FBSyxJQUFnQixFQUFFO1FBQzVCLG9GQUFvRjtRQUNwRixNQUFNLE9BQU8sR0FBZSxDQUFDLFFBQVEsS0FBSyxTQUFTLEVBQUUsQ0FBQyxDQUFDO1FBRXZELElBQUksQ0FBQztZQUNILE9BQU8sTUFBTSxPQUFPLENBQUM7UUFDdkIsQ0FBQztnQkFBUyxDQUFDO1lBQ1QseUZBQXlGO1lBQ3pGLElBQUksUUFBUSxLQUFLLE9BQU8sRUFBRSxDQUFDO2dCQUN6QixRQUFRLEdBQUcsU0FBUyxDQUFDO1lBQ3ZCLENBQUM7UUFDSCxDQUFDO0lBQ0gsQ0FBQyxDQUFDO0FBQ0osQ0FBQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uY3VycmVuY3kuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvc2hhcmVkL2NvbmN1cnJlbmN5LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBMkNHO0FBQ0gsTUFBTSxVQUFVLFlBQVksQ0FBSSxTQUEyQjtJQUN6RCxJQUFJLFFBQWdDLENBQUM7SUFFckMsT0FBTyxLQUFLLElBQWdCLEVBQUU7UUFDNUIsb0ZBQW9GO1FBQ3BGLE1BQU0sT0FBTyxHQUFlLENBQUMsUUFBUSxLQUFLLFNBQVMsRUFBRSxDQUFDLENBQUM7UUFFdkQsSUFBSSxDQUFDO1lBQ0gsT0FBTyxNQUFNLE9BQU8sQ0FBQztRQUN2QixDQUFDO2dCQUFTLENBQUM7WUFDVCx5RkFBeUY7WUFDekYsSUFBSSxRQUFRLEtBQUssT0FBTyxFQUFFLENBQUM7Z0JBQ3pCLFFBQVEsR0FBRyxTQUFTLENBQUM7WUFDdkIsQ0FBQztRQUNILENBQUM7SUFDSCxDQUFDLENBQUM7QUFDSixDQUFDIn0=
