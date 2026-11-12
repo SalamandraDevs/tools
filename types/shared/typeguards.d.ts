@@ -13,6 +13,20 @@ import type { ResponseBody } from './types.js';
  */
 export declare function isObject(obj: any): obj is Record<string, unknown>;
 /**
+ * Narrows an unknown value to a non-empty plain object: an {@link isObject} with at least
+ * one own key.
+ *
+ * @remarks
+ * Refines {@link isObject} with a key-count check, so an empty `{}` is rejected. Callers use
+ * it to decide that a value actually carries fields, such as a database criteria or a range
+ * bound that must select records before a query is built.
+ * @group Shared
+ * @category Type Guards
+ * @param obj - Value to test.
+ * @returns Whether the value is a non-array object with at least one own key.
+ */
+export declare function isKeyedObject(obj: unknown): obj is Record<string, unknown>;
+/**
  * Narrows a value to a canonical UUID v4 string.
  *
  * @remarks
