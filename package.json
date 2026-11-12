@@ -1,6 +1,6 @@
 {
   "name": "@salamandradevs/tools",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Salamandra Devs shared utilities",
   "type": "module",
   "packageManager": "pnpm@12.16.1",
