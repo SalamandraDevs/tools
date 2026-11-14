@@ -1,4 +1,3 @@
-import type { ResponseBody } from './types.js';
 /**
  * Narrows an unknown value to a non-null, non-array plain object.
  *
@@ -38,18 +37,4 @@ export declare function isKeyedObject(obj: unknown): obj is Record<string, unkno
  * @returns Whether the value is a string matching the UUID v4 layout.
  */
 export declare function isUuidV4(id: any): id is string;
-/**
- * Narrows an unknown value to the standard {@link ResponseBody} envelope.
- *
- * @remarks
- * Distinguishes a first-party service response from a third-party payload;
- * {@link makeApiRequest} uses it to decide whether a body is already in the platform
- * envelope. A present-but-null `data` still satisfies the guard, matching the envelope's
- * optional-data contract.
- * @group Shared
- * @category Type Guards
- * @param obj - Value to test.
- * @returns Whether the value carries a string `message` and a `data` property.
- */
-export declare function isResponseBody<T>(obj: unknown): obj is ResponseBody<T>;
 //# sourceMappingURL=typeguards.d.ts.map

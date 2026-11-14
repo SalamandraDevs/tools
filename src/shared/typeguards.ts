@@ -1,4 +1,3 @@
-import type { ResponseBody } from './types.js';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**
@@ -49,21 +48,4 @@ export function isUuidV4(id: any): id is string {
   const uuidV4Regex: RegExp =
     /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   return typeof id === 'string' && uuidV4Regex.test(id);
-}
-
-/**
- * Narrows an unknown value to the standard {@link ResponseBody} envelope.
- *
- * @remarks
- * Distinguishes a first-party service response from a third-party payload;
- * {@link makeApiRequest} uses it to decide whether a body is already in the platform
- * envelope. A present-but-null `data` still satisfies the guard, matching the envelope's
- * optional-data contract.
- * @group Shared
- * @category Type Guards
- * @param obj - Value to test.
- * @returns Whether the value carries a string `message` and a `data` property.
- */
-export function isResponseBody<T>(obj: unknown): obj is ResponseBody<T> {
-  return isObject(obj) && typeof obj.message === 'string' && 'data' in obj;
 }

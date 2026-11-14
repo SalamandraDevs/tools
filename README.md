@@ -10,11 +10,15 @@ repositories without taking ownership of application policy.
 ## What It Provides
 
 - `CustomError` and shared error names for deliberate application error classification.
-- A normalized `makeApiRequest` helper for fetch-based service and third-party calls.
-- Type guards for common runtime checks.
+- Type guards for common runtime checks (`isObject`, `isKeyedObject`, `isUuidV4`).
+- `singleFlight` request coalescing, so concurrent callers of one async operation share a
+  single execution.
+- Date helpers such as `addDays` for fixed-length time offsets like token lifetimes.
 - Zod-to-Mongo schema conversion support for dataset provisioning.
 - A temporary MySQL schema conversion placeholder used by the current Core provisioning path.
 - Node crypto helpers for JWT signing input construction and timing-safe hash comparison.
+- `loadEnvVariables`, which resolves environment-sourced configuration from a Zod schema's
+  `.meta({ env })` metadata.
 
 ## Project Shape
 
@@ -22,8 +26,8 @@ The package exports shared utilities from `@salamandradevs/tools/shared` and Nod
 `@salamandradevs/tools/node`. The separation keeps browser-compatible code clear while allowing
 server packages to use Node crypto utilities where appropriate.
 
-`@salamandradevs/core` and `@salamandradevs/auth` use Tools for structured errors, schema conversion, API
-request normalization, and security-sensitive comparisons.
+`@salamandradevs/core` and `@salamandradevs/auth` use Tools for structured errors, schema conversion,
+and security-sensitive comparisons.
 
 ## Development
 

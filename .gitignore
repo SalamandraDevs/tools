@@ -1,4 +1,15 @@
+dist/
 node_modules/
+types/
 docs-site/
+logs/
 tsconfig.tsbuildinfo
+.env
 .pnpm-store/
+
+# Emacs backup files
+**/*~
+**/\#*#
+**/.#*
+**/'#*
+
