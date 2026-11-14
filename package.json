@@ -1,7 +1,7 @@
 {
   "name": "@salamandradevs/tools",
   "version": "0.2.0",
-  "description": "Salamandra Devs shared utilities",
+  "description": "Shared TypeScript utilities: classified errors, env loading, single-flight, crypto, and type guards",
   "type": "module",
   "packageManager": "pnpm@12.16.1",
   "engines": {
@@ -70,5 +70,14 @@
     "typedoc": "^0.28.20",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.64.0"
-  }
+  },
+  "keywords": [
+    "utilities",
+    "errors",
+    "environment",
+    "zod",
+    "concurrency",
+    "single-flight",
+    "typescript"
+  ]
 }
