@@ -1,6 +1,6 @@
 {
   "name": "@salamandradevs/tools",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Shared TypeScript utilities: classified errors, env loading, single-flight, crypto, and type guards",
   "type": "module",
   "packageManager": "pnpm@12.16.1",
